@@ -1,0 +1,110 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://lobby/lobby.gd" type="Script" id=1]
+[ext_resource path="res://lobby/waiting_room.tscn" type="PackedScene" id=2]
+
+[node name="Lobby" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 343.0
+margin_top = 217.0
+margin_right = 681.0
+margin_bottom = 383.0
+custom_constants/separation = 15
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 338.0
+margin_bottom = 14.0
+text = "Lobby"
+align = 1
+valign = 1
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 29.0
+margin_right = 338.0
+margin_bottom = 131.0
+custom_constants/vseparation = 15
+custom_constants/hseparation = 15
+columns = 2
+
+[node name="NameLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_top = 5.0
+margin_right = 73.0
+margin_bottom = 19.0
+text = "Name:"
+
+[node name="NameTextBox" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_left = 88.0
+margin_right = 338.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 250, 0 )
+text = "Enter Name"
+align = 1
+
+[node name="IPLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_top = 44.0
+margin_right = 73.0
+margin_bottom = 58.0
+text = "IP Address:"
+
+[node name="IPTextBox" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_left = 88.0
+margin_top = 39.0
+margin_right = 338.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 250, 0 )
+text = "Enter IP Address"
+align = 1
+
+[node name="PortLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_top = 83.0
+margin_right = 73.0
+margin_bottom = 97.0
+text = "Port:"
+
+[node name="PortTextBox" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_left = 88.0
+margin_top = 78.0
+margin_right = 338.0
+margin_bottom = 102.0
+rect_min_size = Vector2( 250, 0 )
+text = "Enter Port Number"
+align = 1
+
+[node name="JoinBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 146.0
+margin_right = 338.0
+margin_bottom = 166.0
+text = "Join Game"
+
+[node name="WaitingRoom" parent="." instance=ExtResource( 2 )]
+
+[node name="VBoxContainer" parent="WaitingRoom/CenterContainer" index="0"]
+margin_top = 268.0
+margin_bottom = 332.0
+
+[node name="ItemList" parent="WaitingRoom/CenterContainer/VBoxContainer" index="1"]
+items = [ "Player 1", null, false, "Player 2", null, false, "Player 3", null, false, "Player 4", null, false ]
+[connection signal="text_changed" from="CenterContainer/VBoxContainer/GridContainer/NameTextBox" to="." method="_on_NameTextBox_text_changed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/JoinBtn" to="." method="_on_JoinBtn_pressed"]
+[connection signal="pressed" from="WaitingRoom/CenterContainer/VBoxContainer/ReadyBtn" to="." method="_on_ReadyBtn_pressed"]
+
+[editable path="WaitingRoom"]
