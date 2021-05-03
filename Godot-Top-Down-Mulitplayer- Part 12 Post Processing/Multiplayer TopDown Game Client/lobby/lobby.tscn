@@ -1,0 +1,201 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://lobby/lobby.gd" type="Script" id=1]
+[ext_resource path="res://lobby/waiting_room.tscn" type="PackedScene" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+expand_margin_top = 6.0
+expand_margin_bottom = 6.0
+shadow_size = 2
+shadow_offset = Vector2( 0, 5 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.309804, 0.345098, 0.47451, 0.345098 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 0.992157, 0.992157, 1 )
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 0.992157, 0.992157, 1 )
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id=4]
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.137255, 0.121569, 0.121569, 0.462745 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 1 )
+Button/styles/focus = SubResource( 2 )
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = null
+LineEdit/colors/clear_button_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
+LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
+LineEdit/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0.88, 0.88, 0.88, 0.5 )
+LineEdit/colors/selection_color = Color( 0.490196, 0.490196, 0.490196, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = null
+LineEdit/icons/clear = null
+LineEdit/styles/focus = null
+LineEdit/styles/normal = SubResource( 3 )
+LineEdit/styles/read_only = null
+
+[node name="Lobby" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 4 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.793701
+margin_top = -1.0
+margin_right = -0.793701
+margin_bottom = -1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 471.0
+margin_top = 210.0
+margin_right = 809.0
+margin_bottom = 510.0
+rect_min_size = Vector2( 0, 300 )
+custom_constants/separation = 15
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 338.0
+margin_bottom = 14.0
+size_flags_vertical = 2
+text = "Lobby"
+align = 1
+valign = 1
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 50.0
+margin_right = 338.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 0, 200 )
+custom_constants/vseparation = 15
+custom_constants/hseparation = 15
+columns = 2
+
+[node name="NameLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_right = 73.0
+margin_bottom = 14.0
+size_flags_vertical = 2
+text = "Name:"
+
+[node name="NameTextBox" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_left = 88.0
+margin_right = 338.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_vertical = 3
+text = "Enter Name"
+align = 1
+
+[node name="IPLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_top = 53.0
+margin_right = 73.0
+margin_bottom = 67.0
+size_flags_vertical = 2
+text = "IP Address:"
+
+[node name="IPTextBox" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_left = 88.0
+margin_top = 53.0
+margin_right = 338.0
+margin_bottom = 91.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_vertical = 3
+text = "Enter IP Address"
+align = 1
+
+[node name="PortLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_top = 106.0
+margin_right = 73.0
+margin_bottom = 120.0
+size_flags_vertical = 2
+text = "Port:"
+
+[node name="PortTextBox" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_left = 88.0
+margin_top = 106.0
+margin_right = 338.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_vertical = 3
+text = "Enter Port Number"
+align = 1
+
+[node name="ColorLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_top = 159.0
+margin_right = 73.0
+margin_bottom = 173.0
+size_flags_vertical = 2
+text = "Color:"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_left = 88.0
+margin_top = 159.0
+margin_right = 338.0
+margin_bottom = 177.0
+size_flags_vertical = 2
+
+[node name="JoinBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 265.0
+margin_right = 338.0
+margin_bottom = 290.0
+rect_min_size = Vector2( 0, 25 )
+size_flags_vertical = 2
+text = "Join Game"
+
+[node name="WaitingRoom" parent="." instance=ExtResource( 2 )]
+
+[node name="VBoxContainer" parent="WaitingRoom/CenterContainer" index="0"]
+margin_left = 540.0
+margin_top = 329.0
+margin_right = 740.0
+margin_bottom = 391.0
+
+[node name="ItemList" parent="WaitingRoom/CenterContainer/VBoxContainer" index="1"]
+items = [ "Player 1", null, false, "Player 2", null, false, "Player 3", null, false, "Player 4", null, false ]
+
+[connection signal="text_changed" from="CenterContainer/VBoxContainer/GridContainer/NameTextBox" to="." method="_on_NameTextBox_text_changed"]
+[connection signal="color_changed" from="CenterContainer/VBoxContainer/GridContainer/ColorPickerButton" to="." method="_on_ColorPickerButton_color_changed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/JoinBtn" to="." method="_on_JoinBtn_pressed"]
+[connection signal="pressed" from="WaitingRoom/CenterContainer/VBoxContainer/ReadyBtn" to="." method="_on_ReadyBtn_pressed"]
+
+[editable path="WaitingRoom"]

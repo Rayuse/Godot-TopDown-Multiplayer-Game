@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Preparing for War.wav-fd2f83755d37092d0ecb38a976c3eddc.sample"
+
+[deps]
+
+source_file="res://assets/music/Preparing for War.wav"
+dest_files=[ "res://.import/Preparing for War.wav-fd2f83755d37092d0ecb38a976c3eddc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

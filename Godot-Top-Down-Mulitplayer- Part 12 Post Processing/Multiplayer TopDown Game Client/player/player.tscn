@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://player/player.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/player.png" type="Texture" id=2]
+[ext_resource path="res://assets/sfx/light.png" type="Texture" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.474074, 1 )
+colors = PoolColorArray( 100, 0, 0, 1, 0.970215, 0.448308, 0.0037899, 1, 0.956863, 0.752941, 0.407843, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+lifetime_randomness = 0.28
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+spread = 22.76
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 114.94
+initial_velocity_random = 0.39
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 50.0
+damping_random = 0.49
+angle = -115.9
+angle_random = 0.11
+scale = 3.0
+scale_random = 0.61
+color_ramp = SubResource( 3 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
+collision_mask = 7
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -16, -16, 16, 0, -16, 16, -11.0258, 0 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 3440
+limit_bottom = 2205
+smoothing_enabled = true
+
+[node name="BulletFireLoc" type="Position2D" parent="."]
+
+[node name="FireRate" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 3 )
+energy = 1.5
+range_layer_min = -2
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 5.0
+
+[node name="Light2D2" type="Light2D" parent="."]
+texture = ExtResource( 3 )
+energy = 1.5
+range_layer_min = -2
+range_item_cull_mask = 2
+shadow_filter = 2
+shadow_filter_smooth = 5.0
+shadow_item_cull_mask = 2
+
+[node name="Particles2D" type="Particles2D" parent="."]
+self_modulate = Color( 50, 50, 50, 1 )
+material = SubResource( 1 )
+position = Vector2( -4.22922, 0 )
+z_index = -1
+amount = 50
+lifetime = 0.6
+explosiveness = 0.2
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 4 )
+[connection signal="timeout" from="FireRate" to="." method="_on_FireRate_timeout"]

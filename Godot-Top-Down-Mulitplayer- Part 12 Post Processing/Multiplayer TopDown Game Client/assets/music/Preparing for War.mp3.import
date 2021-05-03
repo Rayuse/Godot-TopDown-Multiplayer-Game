@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Preparing for War.mp3-4309da60f64900bc952e52bdd38c81f9.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Preparing for War.mp3"
+dest_files=[ "res://.import/Preparing for War.mp3-4309da60f64900bc952e52bdd38c81f9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
